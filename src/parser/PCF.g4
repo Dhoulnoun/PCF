@@ -12,3 +12,5 @@ term : LIT                                   # Lit
 
 OP  : '+' | '-' | '*' | '/' ;
 LIT : '0' | [1-9][0-9]* ;
+WS : [ \t\n\r]-> channel(HIDDEN) ;
+LINE_COMMENT : '//' ~ '\n'* '\n' -> channel(HIDDEN) ;
