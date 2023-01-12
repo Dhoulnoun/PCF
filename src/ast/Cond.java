@@ -1,6 +1,7 @@
 package ast;
 
 import interp.Env;
+import interp.IntVal;
 import interp.Value;
 
 public class Cond extends Term {
@@ -16,6 +17,11 @@ public class Cond extends Term {
 
     @Override
     public Value interp(Env e) throws Exception {
-        throw new Exception("Not implemented");
+        if (((IntVal) test.interp(e)).valeur == 0) {
+            return branchTrue.interp(e);
+        }
+        else{
+            return branchFalse.interp(e);
+        }
     }
 }
