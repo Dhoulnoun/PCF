@@ -1,14 +1,14 @@
 package interp;
 
 public class IntVal extends Value {
-    public int i;
+    public int valeur;
 
-    public IntVal(int i) {
-        this.i = i;
+    public IntVal(int val) {
+        this.valeur = val;
     }
 
     public String toString() {
-        return Integer.toString(i);
+        return Integer.toString(valeur);
     }
 }
 

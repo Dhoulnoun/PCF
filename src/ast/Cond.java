@@ -15,7 +15,7 @@ public class Cond extends Term {
     }
 
     @Override
-    public Value interp(Env e) {
-        return null;
+    public Value interp(Env e) throws Exception {
+        throw new Exception("Not implemented");
     }
 }
