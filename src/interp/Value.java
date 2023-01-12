@@ -1,4 +1,5 @@
 package interp;
 
-public class Value {
+public abstract class Value {
+
 }
