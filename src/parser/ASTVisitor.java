@@ -14,7 +14,12 @@ public class ASTVisitor extends PCFBaseVisitor<AST> {
 
     @Override
     public AST visitBinOp(PCFParser.BinOpContext ctx) {
-        OP op = OP.parseOP(ctx.OP().getText());
+        OP op;
+        if (ctx.OPHP()==null){
+            op = OP.parseOP(ctx.OPLP().getText());
+        } else {
+            op = OP.parseOP(ctx.OPHP().getText());
+        }
         List<PCFParser.TermContext> ANTLRTerms = ctx.term();
         List<Term> terms = new ArrayList<>();
         for (PCFParser.TermContext ANTLRTerm : ANTLRTerms)
