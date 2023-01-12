@@ -1,4 +1,7 @@
 package interp;
 
-public class Env {
+public abstract class Env {
+
+
+
 }
