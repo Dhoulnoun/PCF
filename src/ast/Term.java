@@ -5,6 +5,6 @@ import interp.Value;
 
 public abstract class Term extends AST {
 
-    public abstract Value interp(Env e);
+    public abstract Value interp(Env e) throws Exception;
 
 }
