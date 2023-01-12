@@ -39,7 +39,6 @@ public class Main {
 
         Value v = ((Term)analyze(is)).interp(new EmptyEnv());
         System.out.println("====> " + v);
-
         //analyze(is);
     }
 
