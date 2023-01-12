@@ -1,6 +1,8 @@
 package main;
 
-import ast.AST;
+import ast.*;
+import interp.EmptyEnv;
+import interp.Value;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -18,7 +20,7 @@ public class Main {
      *                otherwise the program is entered at the console.
      *             - "-v" indicates verbose mode.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         InputStream is = null;
 
         for (String arg: args) {
@@ -32,10 +34,13 @@ public class Main {
         }
         if (is == null) {
             is = System.in;
-
             verbose = true;
         }
-        analyze(is);
+
+        Value v = ((Term)analyze(is)).interp(new EmptyEnv());
+        System.out.println("====> " + v);
+
+        //analyze(is);
     }
 
     public static AST analyze(InputStream is) throws IOException {
