@@ -4,11 +4,15 @@ grammar PCF;
 
 program : term EOF ;
 term : LIT                                   # Lit
-     | ID                                  # Id
+     | ID                                    # Id
      | '(' term ')'                          # Par
+     | term term                             # App
      | term OPHP term                        # BinOp
      | term OPLP term                        # BinOp
      | 'ifz' term 'then' term 'else' term    # Cond
+     | 'let' ID '=' term 'in' term           # Let
+     | 'fun' ID '->' term                    # Fun
+
      ;
 
 // règles lexicales

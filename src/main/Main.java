@@ -1,6 +1,7 @@
 package main;
 
 import ast.*;
+import interp.Closure;
 import interp.EmptyEnv;
 import interp.Value;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -37,8 +38,10 @@ public class Main {
             verbose = true;
         }
 
-        Value v = ((Term)analyze(is)).interp(new EmptyEnv());
-        System.out.println("====> " + v);
+        /*Value v = ((Term)analyze(is)).interp(new EmptyEnv());
+        System.out.println("====> " + v);*/
+        Closure c = (Closure) ((Term) analyze(is)).interp(new EmptyEnv());
+        System.out.println("====> " + c);
         //analyze(is);
     }
 
