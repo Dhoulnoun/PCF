@@ -1,6 +1,7 @@
 package main;
 
 import ast.*;
+import interp.Closure;
 import interp.EmptyEnv;
 import interp.Value;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -42,9 +43,11 @@ public class Main {
         Value v = ((Term)analyze(is)).interp(new EmptyEnv<>());
         System.out.println("====> " + v + ": " + a);
 
-//        Value v = ((Term)analyze(is)).interp(new EmptyEnv());
-//        System.out.println("====> " + v);
-//        //analyze(is);
+        /*Value v = ((Term)analyze(is)).interp(new EmptyEnv());
+        System.out.println("====> " + v);*/
+        Closure c = (Closure) ((Term) analyze(is)).interp(new EmptyEnv());
+        System.out.println("====> " + c);
+        //analyze(is);
     }
 
     public static AST analyze(InputStream is) throws IOException {
