@@ -3,6 +3,7 @@ package ast;
 import interp.Env;
 import interp.IntVal;
 import interp.Value;
+import typer.Type;
 
 public class BinOp extends Term {
     public OP op;
@@ -16,7 +17,7 @@ public class BinOp extends Term {
     }
 
     @Override
-    public Value interp(Env e) throws Exception {
+    public Value interp(Env<Value> e) throws Exception {
         switch (op){
             case PLUS -> {
                 return new IntVal((((IntVal) term1.interp(e)).valeur + ((IntVal) term2.interp(e)).valeur));
@@ -32,5 +33,10 @@ public class BinOp extends Term {
             }
         }
         throw new Exception("OP not recognized");
+    }
+
+    @Override
+    public Type typer(Env<Type> e) {
+        return null;
     }
 }

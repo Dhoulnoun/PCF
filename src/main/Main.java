@@ -7,6 +7,7 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import parser.*;
+import typer.Type;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -36,10 +37,14 @@ public class Main {
             is = System.in;
             verbose = true;
         }
+        Term t = (Term)analyze(is);
+        Type a = t.typer(new EmptyEnv<Type>());
+        Value v = ((Term)analyze(is)).interp(new EmptyEnv<>());
+        System.out.println("====> " + v + ": " + a);
 
-        Value v = ((Term)analyze(is)).interp(new EmptyEnv());
-        System.out.println("====> " + v);
-        //analyze(is);
+//        Value v = ((Term)analyze(is)).interp(new EmptyEnv());
+//        System.out.println("====> " + v);
+//        //analyze(is);
     }
 
     public static AST analyze(InputStream is) throws IOException {

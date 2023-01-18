@@ -3,6 +3,7 @@ package ast;
 import interp.Env;
 import interp.IntVal;
 import interp.Value;
+import typer.Type;
 
 public class Cond extends Term {
     public Term test;
@@ -16,13 +17,18 @@ public class Cond extends Term {
     }
 
     @Override
-    public Value interp(Env e) throws Exception {
+    public Value interp(Env<Value> e) throws Exception {
         if (((IntVal) test.interp(e)).valeur == 0) {
             return branchTrue.interp(e);
         }
         else{
             return branchFalse.interp(e);
         }
+    }
+
+    @Override
+    public Type typer(Env<Type> e) {
+        return null;
     }
 
 }
