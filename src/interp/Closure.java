@@ -1,14 +1,15 @@
 package interp;
 
 import ast.Term;
+import ast.Var;
 
 public class Closure extends Value{
 
     Term function;
     Env env;
-    Value argument;
+    Var argument;
 
-    public Closure(Term function, Env env, Value argument) {
+    public Closure(Term function, Env env, Var argument) {
         this.function = function;
         this.env = env;
         this.argument = argument;
@@ -17,7 +18,7 @@ public class Closure extends Value{
     public Term getFunction() {
         return function;
     }
-    public Value getArgument() {
+    public Var getArgument() {
         return argument;
     }
     public Env getEnv() {

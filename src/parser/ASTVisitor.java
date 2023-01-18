@@ -1,6 +1,7 @@
 package parser;
 
 import ast.*;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,4 +43,22 @@ public class ASTVisitor extends PCFBaseVisitor<AST> {
         Term term = (Term) visit(ANTLRTerm);
         return term;
     }
+
+    @Override
+    public AST visitVar(PCFParser.VarContext ctx) {
+        return new Var(ctx.getText());
+    }
+
+    @Override
+    public AST visitLet(PCFParser.LetContext ctx) {
+        return new Let(ctx.ID().getText(),(Term) visit(ctx.term(0)), (Term) visit(ctx.term(1)));
+    }
+
+    @Override
+    public AST visitFun(PCFParser.FunContext ctx) {
+        return new Func(new Var(ctx.ID().getText()), (Term) visit(ctx.term()));
+    }
+
+
+
 }

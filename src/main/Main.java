@@ -40,13 +40,9 @@ public class Main {
         }
         Term t = (Term)analyze(is);
         Type a = t.typer(new EmptyEnv<Type>());
-        Value v = ((Term)analyze(is)).interp(new EmptyEnv<>());
-        System.out.println("====> " + v + ": " + a);
 
-        /*Value v = ((Term)analyze(is)).interp(new EmptyEnv());
-        System.out.println("====> " + v);*/
-        Closure c = (Closure) ((Term) analyze(is)).interp(new EmptyEnv());
-        System.out.println("====> " + c);
+        Value v = ((Term)analyze(is)).interp(new EmptyEnv());
+        System.out.println("====> " + v);
         //analyze(is);
     }
 

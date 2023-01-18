@@ -130,3 +130,11 @@ fabric.properties
 /src/parser/PCFLexer.tokens
 /src/parser/PCFParser.java
 /src/parser/PCFVisitor.java
+/src/parser/PCF.interp
+/src/parser/PCF.tokens
+/src/parser/PCFBaseVisitor.java
+/src/parser/PCFLexer.java
+/src/parser/PCFLexer.interp
+/src/parser/PCFLexer.tokens
+/src/parser/PCFParser.java
+/src/parser/PCFVisitor.java
