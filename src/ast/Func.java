@@ -17,7 +17,7 @@ public class Func extends Term{
     }
 
     @Override
-    public Value interp(Env e) throws Exception {
+    public Value interp(Env<Value> e) throws Exception {
         return new Closure(function, e, argument);
     }
 
