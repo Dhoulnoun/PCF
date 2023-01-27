@@ -16,7 +16,7 @@
         <PerGrammarGenerationSettings>
           <option name="fileName" value="$PROJECT_DIR$/src/parser/PCF.g4" />
           <option name="autoGen" value="true" />
-          <option name="outputDir" value="C:\Users\Younes\Documents\IMT\S1\MathDisc\PCF\src" />
+          <option name="outputDir" value="C:\Users\Younes\Documents\IMT\S1\MathDisc\Langage2Prog\PCF\PCF\src" />
           <option name="libDir" value="" />
           <option name="encoding" value="" />
           <option name="pkg" value="parser" />

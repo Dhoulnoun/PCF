@@ -38,9 +38,6 @@ public class Main {
             is = System.in;
             verbose = true;
         }
-        Term t = (Term)analyze(is);
-        Type a = t.typer(new EmptyEnv<Type>());
-
         Value v = ((Term)analyze(is)).interp(new EmptyEnv());
         System.out.println("====> " + v);
         //analyze(is);
