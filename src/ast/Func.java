@@ -8,10 +8,10 @@ import typer.Type;
 
 public class Func extends Term{
 
-    Var argument;
+    VarUse argument;
     Term function;
 
-    public Func(Var variable, Term function) {
+    public Func(VarUse variable, Term function) {
         this.argument = variable;
         this.function = function;
     }

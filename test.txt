@@ -1,0 +1,39 @@
+    PCF vert
+
+        1 ==> 1 OK
+        1 - 2 ==> -1 OK
+        ifz 0 then 1 else 2 ==> 1 PAS OK : Renvoie 2
+        ifz 1 then 1 else 2 ==> 2 OK : Renvoie 2
+        1 - 2 - 3 ==> -4 OK
+        1 + 2 * 3 ==> 7 OK
+        (1) ==> 1 OK
+        (1 + 2) * 3 ==> 9 OK
+        4 / 0 ==> / by zero OK
+
+    PCF bleu
+
+        let x = 1 in x ==> 1 OK
+        let x = 1 in x + 1 ==> 2 OK
+        let x = 1 in let y = 2 in x + y ==> 3 OK
+        let x = 1 in let x = 2 in x ==> 2 OK
+        let x = 1 in let x = x + 1 in x ==> 2 OK
+        let x = let x = 1 in x in x ==> 1 OK
+        let x = 1 in (let x = 2 in x) + x ==> 3 OK
+        z ==> exception OK
+        Vérification que la modification de l'environnement n'est pas destructrice : let x = (let y = 1 in y) in y ==> Exception
+
+    PCF rouge
+
+        fun x -> x OK
+        fun x -> x + 1 OK
+        let inc = fun x -> x + 1 in inc 1 ==> 2 PAS OK : renvoie 1
+        let inc = fun x -> x + 1 in inc ==> fermeture PAS OK : Exception
+        let add = fun x -> fun y -> x + y in let inc = add 1 in inc 2 ==> 3 PAS OK : renvoie 2
+        let inc = fun x -> x + 1 in 3 + inc 1 ==> 5 PAS OK : renvoie 4
+        01 ==> exception PAS OK : renvoie 1
+        (fun x -> x x) fun x -> x x
+
+    PCF noir
+
+        let fact = fix f fun n -> ifz n then 1 else n * f (n - 1) in fact 3
+        fix x x

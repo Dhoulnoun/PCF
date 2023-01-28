@@ -38,9 +38,9 @@ public class Main {
             is = System.in;
             verbose = true;
         }
-        Value v = ((Term)analyze(is)).interp(new EmptyEnv());
-        System.out.println("====> " + v);
-        //analyze(is);
+        Term term = (Term)analyze(is);
+        Value v = term.interp(new EmptyEnv<Value>());
+        System.out.println("==> " + v);
     }
 
     public static AST analyze(InputStream is) throws IOException {

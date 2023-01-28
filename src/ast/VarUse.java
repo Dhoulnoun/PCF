@@ -4,11 +4,11 @@ import interp.Env;
 import interp.Value;
 import typer.Type;
 
-public class Var extends Term{
+public class VarUse extends Term{
 
     String varName;
 
-    public Var(String varName) {
+    public VarUse(String varName) {
         this.varName = varName;
     }
 

@@ -2,21 +2,24 @@ grammar PCF;
 
 // règles syntaxiques
 
-program : term EOF ;
+//program : term EOF ;
 term : LIT                                   # Lit
-     | ID                                    # Var
-     | PARENG term PAREND                          # Par
+     | VAR                                   #VarUse
+     | PARENG term PAREND                    # Par
      | term term                             # App
      | term OPHP term                        # BinOp
      | term OPLP term                        # BinOp
-     | IFZ term THEN term ELSE term    # Cond
-     | LET ID ASSIGN term IN term          # Let
-     | FUN ID ARROW term                   # Fun
+     | 'let' VAR '=' term 'in' term          # Var
+     | IFZ term THEN term ELSE term          # Cond
+     //| LET ID ASSIGN term IN term            # Let
+     | FUN ID ARROW term                     # Fun
+     // | ID                                    # Var
      ;
 
 // règles lexicales
 OPHP : '*' | '/' ;
 OPLP : '+' | '-';
+VAR : [a-zA-Z]+;
 LIT : '0' | [1-9][0-9]* ;
 WS : [ \t\n\r]-> channel(HIDDEN) ;
 LINE_COMMENT : '//' ~ '\n'* '\n' -> channel(HIDDEN) ;
@@ -25,8 +28,6 @@ IFZ  : 'ifz';
 THEN : 'then';
 ELSE : 'else';
 ARROW : '->';
-LET : 'let';
-IN : 'in';
 FUN : 'fun';
 ASSIGN : '=';
 PARENG : '(';
