@@ -16,9 +16,17 @@ public class Func extends Term{
         this.function = function;
     }
 
+    public VarUse getArgument() {
+        return this.argument;
+    }
+
+    public Term getFunction() {
+        return this.function;
+    }
+
     @Override
     public Value interp(Env<Value> e) throws Exception {
-        return new Closure(function, e, argument);
+        return new Closure(argument, function, e);
     }
 
     @Override

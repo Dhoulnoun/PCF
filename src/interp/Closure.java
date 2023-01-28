@@ -9,7 +9,7 @@ public class Closure extends Value{
     Env env;
     VarUse argument;
 
-    public Closure(Term function, Env env, VarUse argument) {
+    public Closure(VarUse argument, Term function, Env env) {
         this.function = function;
         this.env = env;
         this.argument = argument;
